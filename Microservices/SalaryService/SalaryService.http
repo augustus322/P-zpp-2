@@ -1,0 +1,6 @@
+@SalaryService_HostAddress = http://localhost:5077
+
+GET {{SalaryService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
