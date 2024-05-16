@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseService", "Database
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "NotificationService\NotificationService.csproj", "{702CAABA-A28A-4FD6-AF45-F040D5D72672}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentService", "RecruitmentService\RecruitmentService.csproj", "{203D3BD4-5204-475F-93E9-4A3104900A53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{702CAABA-A28A-4FD6-AF45-F040D5D72672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{702CAABA-A28A-4FD6-AF45-F040D5D72672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{702CAABA-A28A-4FD6-AF45-F040D5D72672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203D3BD4-5204-475F-93E9-4A3104900A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203D3BD4-5204-475F-93E9-4A3104900A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203D3BD4-5204-475F-93E9-4A3104900A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203D3BD4-5204-475F-93E9-4A3104900A53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
