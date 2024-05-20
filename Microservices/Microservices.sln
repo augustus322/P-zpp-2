@@ -9,7 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalaryService", "SalaryServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManagerService", "UserManagerService\UserManagerService.csproj", "{C188B01F-65FB-46D5-AA3B-0E0BD6C33BD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseService", "DatabaseService\DatabaseService.csproj", "{36B9449D-A482-463C-8D07-1F62063E7A0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseService", "DatabaseService\DatabaseService.csproj", "{36B9449D-A482-463C-8D07-1F62063E7A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "NotificationService\NotificationService.csproj", "{702CAABA-A28A-4FD6-AF45-F040D5D72672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentService", "RecruitmentService\RecruitmentService.csproj", "{203D3BD4-5204-475F-93E9-4A3104900A53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarService", "CalendarService\CalendarService.csproj", "{BA3BD38E-FC5B-47A2-90D0-726E1DC2A68D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseService", "CourseService\CourseService.csproj", "{E11D20E9-0672-49A4-B1B2-DC4F70B3DA46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeOffService", "TimeOffService\TimeOffService.csproj", "{749294CF-FB50-4108-8C6C-7D70A7EC2B5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingService", "MeetingService\MeetingService.csproj", "{F42357DF-9C3A-49CA-AECB-169687254CB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +45,30 @@ Global
 		{36B9449D-A482-463C-8D07-1F62063E7A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36B9449D-A482-463C-8D07-1F62063E7A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36B9449D-A482-463C-8D07-1F62063E7A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{702CAABA-A28A-4FD6-AF45-F040D5D72672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{702CAABA-A28A-4FD6-AF45-F040D5D72672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{702CAABA-A28A-4FD6-AF45-F040D5D72672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{702CAABA-A28A-4FD6-AF45-F040D5D72672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203D3BD4-5204-475F-93E9-4A3104900A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203D3BD4-5204-475F-93E9-4A3104900A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203D3BD4-5204-475F-93E9-4A3104900A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203D3BD4-5204-475F-93E9-4A3104900A53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA3BD38E-FC5B-47A2-90D0-726E1DC2A68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3BD38E-FC5B-47A2-90D0-726E1DC2A68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3BD38E-FC5B-47A2-90D0-726E1DC2A68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3BD38E-FC5B-47A2-90D0-726E1DC2A68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E11D20E9-0672-49A4-B1B2-DC4F70B3DA46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E11D20E9-0672-49A4-B1B2-DC4F70B3DA46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E11D20E9-0672-49A4-B1B2-DC4F70B3DA46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E11D20E9-0672-49A4-B1B2-DC4F70B3DA46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{749294CF-FB50-4108-8C6C-7D70A7EC2B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{749294CF-FB50-4108-8C6C-7D70A7EC2B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{749294CF-FB50-4108-8C6C-7D70A7EC2B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{749294CF-FB50-4108-8C6C-7D70A7EC2B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F42357DF-9C3A-49CA-AECB-169687254CB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F42357DF-9C3A-49CA-AECB-169687254CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F42357DF-9C3A-49CA-AECB-169687254CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F42357DF-9C3A-49CA-AECB-169687254CB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

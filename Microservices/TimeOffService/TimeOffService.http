@@ -1,0 +1,6 @@
+@TimeOffService_HostAddress = http://localhost:5121
+
+GET {{TimeOffService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
