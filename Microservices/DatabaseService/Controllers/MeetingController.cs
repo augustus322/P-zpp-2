@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatabaseService.Controllers
 {
-    public class MeetingController : Controller
+    [ApiController]
+    public class MeetingController : ControllerBase
     {
         private readonly MeetingCRUDService _meetingCRUDService;
 

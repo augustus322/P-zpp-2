@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatabaseService.Controllers
 {
-    public class CourseController : Controller
+    [ApiController]
+    public class CourseController : ControllerBase
     {
         private readonly CourseCRUDService _courseCRUDService;
 

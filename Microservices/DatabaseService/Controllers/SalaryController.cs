@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatabaseService.Controllers
 {
-    public class SalaryController : Controller
+    [ApiController]
+    public class SalaryController : ControllerBase
     {
         private readonly SalaryCRUDService _salaryCRUDService;
 

@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatabaseService.Controllers
 {
-    public class TimeOffController : Controller
+    [ApiController]
+    public class TimeOffController : ControllerBase
     {
         private readonly TimeOffCRUDService _timeOffCRUDService;
 

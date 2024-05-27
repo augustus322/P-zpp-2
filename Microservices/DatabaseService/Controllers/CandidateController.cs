@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatabaseService.Controllers
 {
-    public class CandidateController : Controller
+    [ApiController]
+    public class CandidateController : ControllerBase
     {
         private readonly CandidateCRUDService _candidateCRUDService;
 
