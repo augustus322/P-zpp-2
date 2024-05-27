@@ -4,35 +4,35 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseService.Repositories
 {
-    public class CandidateRepository : IRepository<Candidate>
+    public class SalaryRepository : IRepository<Salary>
     {
         private readonly HrDBContext _context;
 
-        public CandidateRepository(HrDBContext context)
+        public SalaryRepository(HrDBContext context)
         {
             _context = context;
         }
 
-        public void Add(Candidate entity)
+        public void Add(Salary entity)
         {
             _context.Add(entity);
         }
 
         public async Task DeleteAsync(int id)
         {
-            Candidate entity = _context.Candidates.Find(id);
+            Salary entity = _context.Salaries.Find(id);
             if (entity != null)
             {
-                _context.Candidates.Remove(entity);
+                _context.Salaries.Remove(entity);
             }
         }
 
-        public IQueryable<Candidate> GetAll()
+        public IQueryable<Salary> GetAll()
         {
-            return _context.Candidates.AsQueryable();
+            return _context.Salaries.AsQueryable();
         }
 
-        public async Task<Candidate?> GetByIdAsync(int id)
+        public async Task<Salary?> GetByIdAsync(int id)
         {
             return await GetAll().FirstOrDefaultAsync(x => x.ID == id);
         }
@@ -42,7 +42,7 @@ namespace DatabaseService.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public void Update(Candidate entity)
+        public void Update(Salary entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
         }
