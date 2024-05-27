@@ -1,4 +1,8 @@
 using DatabaseService.Data;
+using DatabaseService.Model;
+using DatabaseService.Repositories;
+using DatabaseService.Services;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 internal class Program
@@ -30,6 +34,24 @@ internal class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        // Repositiories
+        builder.Services.AddScoped<IRepository<Candidate>, CandidateRepository>();
+        builder.Services.AddScoped<IRepository<Course>, CourseRepository>();
+        builder.Services.AddScoped<IRepository<Employee>, EmployeeRepository>();
+        builder.Services.AddScoped<IRepository<Meeting>, MeetingRepository>();
+        builder.Services.AddScoped<IRepository<Recruitment>, RecruitmentRepository>();
+        builder.Services.AddScoped<IRepository<Salary>, SalaryRepository>();
+        builder.Services.AddScoped<IRepository<TimeOff>, TimeOffRepository>();
+
+        // Services
+        builder.Services.AddScoped<CandidateCRUDService>();
+        builder.Services.AddScoped<CourseCRUDService>();
+        builder.Services.AddScoped<EmployeeCRUDService>();
+        builder.Services.AddScoped<MeetingCRUDService>();
+        builder.Services.AddScoped<RecruitmentCRUDService>();
+        builder.Services.AddScoped<SalaryCRUDService>();
+        builder.Services.AddScoped<TimeOffCRUDService>();
 
         //database
         var connection_string = builder.Configuration.GetConnectionString("DefaultConnection");

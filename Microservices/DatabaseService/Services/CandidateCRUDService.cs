@@ -32,7 +32,7 @@ namespace DatabaseService.Services
         public async Task Delete(int id)
         {
             await _repository.DeleteAsync(id);
-            _repository.SaveAsync();
+            await _repository.SaveAsync();
         }
 
     }
