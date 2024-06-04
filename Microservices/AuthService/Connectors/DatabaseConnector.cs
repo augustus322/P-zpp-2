@@ -2,7 +2,7 @@
 
 namespace AuthService.Connectors;
 
-public class DatabaseConnector
+public class DatabaseConnector : IDatabaseConnector
 {
 	public HttpClient Client { get; set; }
 

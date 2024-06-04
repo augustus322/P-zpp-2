@@ -11,17 +11,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManagerService", "UserM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseService", "DatabaseService\DatabaseService.csproj", "{36B9449D-A482-463C-8D07-1F62063E7A0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "NotificationService\NotificationService.csproj", "{702CAABA-A28A-4FD6-AF45-F040D5D72672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService", "NotificationService\NotificationService.csproj", "{702CAABA-A28A-4FD6-AF45-F040D5D72672}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentService", "RecruitmentService\RecruitmentService.csproj", "{203D3BD4-5204-475F-93E9-4A3104900A53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecruitmentService", "RecruitmentService\RecruitmentService.csproj", "{203D3BD4-5204-475F-93E9-4A3104900A53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarService", "CalendarService\CalendarService.csproj", "{BA3BD38E-FC5B-47A2-90D0-726E1DC2A68D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarService", "CalendarService\CalendarService.csproj", "{BA3BD38E-FC5B-47A2-90D0-726E1DC2A68D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseService", "CourseService\CourseService.csproj", "{E11D20E9-0672-49A4-B1B2-DC4F70B3DA46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseService", "CourseService\CourseService.csproj", "{E11D20E9-0672-49A4-B1B2-DC4F70B3DA46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeOffService", "TimeOffService\TimeOffService.csproj", "{749294CF-FB50-4108-8C6C-7D70A7EC2B5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeOffService", "TimeOffService\TimeOffService.csproj", "{749294CF-FB50-4108-8C6C-7D70A7EC2B5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingService", "MeetingService\MeetingService.csproj", "{F42357DF-9C3A-49CA-AECB-169687254CB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeetingService", "MeetingService\MeetingService.csproj", "{F42357DF-9C3A-49CA-AECB-169687254CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.UnitTests", "AuthService.UnitTests\AuthService.UnitTests.csproj", "{0E49817D-455D-48F0-A15F-E4BF06B85B67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{F42357DF-9C3A-49CA-AECB-169687254CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F42357DF-9C3A-49CA-AECB-169687254CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F42357DF-9C3A-49CA-AECB-169687254CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E49817D-455D-48F0-A15F-E4BF06B85B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E49817D-455D-48F0-A15F-E4BF06B85B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E49817D-455D-48F0-A15F-E4BF06B85B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E49817D-455D-48F0-A15F-E4BF06B85B67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

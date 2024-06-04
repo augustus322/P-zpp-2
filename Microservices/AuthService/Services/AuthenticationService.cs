@@ -6,10 +6,10 @@ namespace AuthService.Services;
 
 public class AuthenticationService
 {
-	private readonly DatabaseConnector _connector;
+	private readonly IDatabaseConnector _connector;
 	private readonly IJwtProvider _provider;
 
-	public AuthenticationService(DatabaseConnector connector,
+	public AuthenticationService(IDatabaseConnector connector,
 		IJwtProvider provider)
 	{
 		_connector = connector;
