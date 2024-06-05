@@ -50,6 +50,8 @@ namespace CourseService.Controllers
             return Ok();
         }
 
+        //baseAddress+ - dodać, tylko jakie jest ip?
+
         // Schedule a course by making an HTTP request to another microservice
         [HttpPost("courses/{id}/schedule")]
         public async Task<IActionResult> ScheduleCourse(int id, [FromBody] DateTime dateTime)
@@ -66,8 +68,8 @@ namespace CourseService.Controllers
             };
             var content = new StringContent(JsonSerializer.Serialize(meetingRequest), System.Text.Encoding.UTF8, "appsettings/json");
 
-            //The endpoint to schedule meetings is ???
-            var response = await client.PostAsync("https://calendarservice/api/calendar/schedule", content);
+           
+            var response = await client.PostAsync(baseAddress+"coursecalendarcontroller/ScheduleCourse", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -83,7 +85,7 @@ namespace CourseService.Controllers
         public async Task<IActionResult> GetCalendarEvents()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://calendarservice/api/calendar/events"); //The endpoint to Google Calendar is???
+            var response = await client.GetAsync(baseAddress+"https://calendarservice/api/calendar/events"); 
 
             if (response.IsSuccessStatusCode)
             {
@@ -101,8 +103,8 @@ namespace CourseService.Controllers
             var client = _httpClientFactory.CreateClient();
             var content = new StringContent(JsonSerializer.Serialize(request), System.Text.Encoding.UTF8, "application/json");
 
-            // Assuming the endpoint to add events is "/api/calendar/events"
-            var response = await client.PostAsync("https://calendarservice/api/calendar/events", content);
+            
+            var response = await client.PostAsync(baseAddress+"https://calendarservice/api/calendar/events", content);
 
             if (response.IsSuccessStatusCode)
             {
