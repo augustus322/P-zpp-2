@@ -28,6 +28,17 @@ public class UserManagementController : ControllerBase
         return list;
     }
 
+    // nie wiem jeszcze jak przeslac id, zeby post zwrocil mi 1 usera o konkretnym id
+    [HttpGet("{id}")]
+    public async Task<Employee> GetUser(int id)
+    {
+        var httpClient = _httpClientFactory.CreateClient();
+        var response = await httpClient.GetAsync(baseAddress + "/EmployeeController/GetById?id=" + id);
+
+        var user = JsonConvert.DeserializeObject<Employee>(response.Content.ToString());
+        return user;
+    }
+
     [HttpPost]
     public void AddUser([FromBody] HttpContent content)
     {
