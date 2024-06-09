@@ -7,13 +7,13 @@ namespace RecruitmentService.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class RecruitmentController : ControllerBase
+public class TimeOffController : ControllerBase
 {
     private readonly IHttpClientFactory _httpClientFactory;
 
     const string baseAddress = "DatabaseService";
 
-    public RecruitmentController(IHttpClientFactory httpClientFactory)
+    public TimeOffController(IHttpClientFactory httpClientFactory)
     {
         _httpClientFactory = httpClientFactory;
     }
@@ -21,7 +21,7 @@ public class RecruitmentController : ControllerBase
     [HttpGet]
     public async Task<string> GetRecruitments()
     {
-        var targetService = baseAddress + "/RecruitmentController/GetAll";
+        var targetService = baseAddress + "/TimeOffController/GetAll";
 
         var httpclient = _httpClientFactory.CreateClient();
         var response = await httpclient.GetAsync(targetService);
@@ -34,10 +34,10 @@ public class RecruitmentController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> PostRecruitment([FromBody] HttpContent data)
     {
-        var targetService = baseAddress + "/RecruitmentController/Add";
+        var targetService = baseAddress + "/TimeOffController/Add";
 
         var httpclient = _httpClientFactory.CreateClient();
-        var response = await httpclient.PostAsync(targetService, data);  
+        var response = await httpclient.PostAsync(targetService, data);
 
         if (response.IsSuccessStatusCode)
         {
@@ -51,12 +51,12 @@ public class RecruitmentController : ControllerBase
 
     // do zatwierdzenia/odrzucenia
     [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateRecruitment(int id, Recruitment recruitment)
+    public async Task<ActionResult> UpdateRecruitment(int id, TimeOff timeoff)
     {
-        var targetService = baseAddress + "/RecruitmentController/Update" + id;
+        var targetService = baseAddress + "/TimeOffController/Update" + id;
         var httpclient = _httpClientFactory.CreateClient();
 
-        var content = JsonSerializer.Serialize(recruitment);
+        var content = JsonSerializer.Serialize(timeoff);
 
         var response = httpclient.PutAsync(targetService, new StringContent(content));
 
