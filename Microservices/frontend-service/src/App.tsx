@@ -1,0 +1,63 @@
+import NavBar from "./components/NavBar";
+import StronaStartowa from "./components/OkienkaLogowania";
+import StronaLogowania from "../src/pages/StronaLogowania";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FormularzOsobowy from "./components/FormularzDanychOsobowych";
+import StronaRekrutacji from "./pages/StronaRekrutacji";
+import StronaKalendarz from "./pages/StronaKalendarz";
+import StronaUrlopy from "./pages/StronaUrlopy";
+import StronaWynagrodzenia from "./pages/StronaWynagrodzenia";
+import AdminStronaDaneOsobowe from "./pages/AdminStronaDaneOsobowe";
+import AdminStronaWynagrodzenia from "./pages/AdminStronaWynagrodzenia";
+import StronaWniosekOUrlop from "./pages/StronaWniosekOUrlop";
+import StronaHRUrlopy from "./pages/StronaHRUrlopy";
+import StronaHRRekrutacja from "./pages/StronaHRRekrutacja";
+
+function App() {
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<StronaLogowania />}></Route>
+          <Route path="/login" element={<StronaLogowania />}></Route>
+          <Route path="/data" element={<FormularzOsobowy />}></Route>
+          <Route
+            path="/rekrutacja"
+            element={<StronaRekrutacji></StronaRekrutacji>}
+          ></Route>
+          <Route
+            path="/kalendarz"
+            element={<StronaKalendarz></StronaKalendarz>}
+          ></Route>
+          <Route path="/urlopy" element={<StronaUrlopy></StronaUrlopy>}></Route>
+          <Route
+            path="/wynagrodzenia"
+            element={<StronaWynagrodzenia></StronaWynagrodzenia>}
+          ></Route>
+          <Route
+            path="/dataAdmin"
+            element={<AdminStronaDaneOsobowe></AdminStronaDaneOsobowe>}
+          ></Route>
+          <Route
+            path="wynagrodzeniaAdmin"
+            element={<AdminStronaWynagrodzenia></AdminStronaWynagrodzenia>}
+          ></Route>
+          <Route
+            path="/wniosek-o-urlop"
+            element={<StronaWniosekOUrlop></StronaWniosekOUrlop>}
+          ></Route>
+          <Route
+            path="/urlopy-hr"
+            element={<StronaHRUrlopy></StronaHRUrlopy>}
+          ></Route>
+          <Route
+            path="/rekrutacja-hr"
+            element={<StronaHRRekrutacja></StronaHRRekrutacja>}
+          ></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
