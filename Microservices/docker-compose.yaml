@@ -1,4 +1,10 @@
 version: "3.9"
+networks:
+  msvnetwork:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
 services:
   postgres:
     image: "postgres"
@@ -13,6 +19,119 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.1
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: AuthService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.2
+    ports:
+      - 8000:80
+
+  frontend-service:
+    build:
+      context: .
+      dockerfile: frontend-service/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.3
+    ports:
+      - 8000:80
+
+  calendar-service:
+    build:
+      context: .
+      dockerfile: CalendarService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.4
+    ports:
+      - 8000:80
+
+  course-service:
+    build:
+      context: .
+      dockerfile: CourseService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.5
+    ports:
+      - 8000:80
+
+  database-serivce:
+    build:
+      context: .
+      dockerfile: DatabaseService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.6
+    ports:
+      - 8000:80
+
+  meeting-service:
+    build:
+      context: .
+      dockerfile: MeetingService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.7
+    ports:
+      - 8000:80
+
+  notification-service:
+    build:
+      context: .
+      dockerfile: NotificationService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.8
+    ports:
+      - 8000:80
+
+  recruitment-service:
+    build:
+      context: .
+      dockerfile: RecruitmentService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.9
+    ports:
+      - 8000:80
+
+  salary-service:
+    build:
+      context: .
+      dockerfile: SalaryService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.10
+    ports:
+      - 8000:80
+
+  time-off-service:
+    build:
+      context: .
+      dockerfile: TimeOffService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.11
+    ports:
+      - 8000:80
+
+  user-manager-service:
+    build:
+      context: .
+      dockerfile: UserManagerService/Dockerfile
+    networks:
+      msvnetwork:
+        ipv4_address: 17.20.0.12
+    ports:
+      - 8000:80
 
   adminer:
     image: dockette/adminer:pgsql
