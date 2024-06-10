@@ -40,8 +40,6 @@ services:
     networks:
       msvnetwork:
         ipv4_address: 17.20.0.3
-    ports:
-      - 8000:80
 
   calendar-service:
     build:
