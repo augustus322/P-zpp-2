@@ -58,7 +58,7 @@ function FormularzRekrutacji() {
     <>
       <div style={wrapperStyle}>
         <div style={headerStyle}>FORMULARZ KANDYDATÓW</div>
-        <div style={containerStyle}>
+        <form style={containerStyle}>
           <div style={formStyle}>
             <div style={labelColumnStyle}>
               <label htmlFor="inputName" className="col-form-label">
@@ -148,7 +148,7 @@ function FormularzRekrutacji() {
           >
             Zatwierdź
           </button>
-        </div>
+        </form>
       </div>
     </>
   );
