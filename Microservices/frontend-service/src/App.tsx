@@ -12,6 +12,8 @@ import AdminStronaWynagrodzenia from "./pages/AdminStronaWynagrodzenia";
 import StronaWniosekOUrlop from "./pages/StronaWniosekOUrlop";
 import StronaHRUrlopy from "./pages/StronaHRUrlopy";
 import StronaHRRekrutacja from "./pages/StronaHRRekrutacja";
+import StronaSzkolenia from "./pages/StronaSzkolenia";
+import StronaGłówna from "./pages/StronaGłówna";
 
 function App() {
   return (
@@ -24,6 +26,14 @@ function App() {
           <Route
             path="/rekrutacja"
             element={<StronaRekrutacji></StronaRekrutacji>}
+          ></Route>
+          <Route
+            path="/główna"
+            element={<StronaGłówna></StronaGłówna>}
+          ></Route>
+          <Route
+            path="/szkolenia"
+            element={<StronaSzkolenia></StronaSzkolenia>}
           ></Route>
           <Route
             path="/kalendarz"

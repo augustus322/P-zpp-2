@@ -3,6 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function NavBar() {
+  const navbarStyle: React.CSSProperties = {
+    backgroundColor: "#ffffff", // zmiana tła na białe
+    boxShadow: "0px 4px 4px 5px #00000033",
+  };
+
   const sidebarStyle: React.CSSProperties = {
     width: "auto",
     height: "100vh",
@@ -38,7 +43,7 @@ function NavBar() {
     <>
       <nav
         className="navbar navbar-light  fixed-top"
-        style={{ boxShadow: "0px 4px 4px 5px #00000033" }}
+        style={navbarStyle} // Ustawienie tła nawigacji
       >
         <div className="container-fluid">
           <button
@@ -71,7 +76,7 @@ function NavBar() {
 
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <a className="nav-link" href="#" style={navLinkStyle}>
+                  <a className="nav-link" href="http://localhost:5173/główna" style={navLinkStyle}>
                     STRONA GŁÓWNA
                   </a>
                 </li>
@@ -121,7 +126,7 @@ function NavBar() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#" style={navLinkStyle}>
+                  <a className="nav-link" href="http://localhost:5173/szkolenia" style={navLinkStyle}>
                     SZKOLENIA
                   </a>
                 </li>
