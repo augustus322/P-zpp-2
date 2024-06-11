@@ -4,7 +4,7 @@ namespace DatabaseService.Dtos;
 
 public class RecruitmentCreateDto
 {
-	public Candidate Candidate { get; set; }
-	public Employee Recruiter { get; set; }
+	public int CandidateID { get; set; }
+	public int RecruiterID { get; set; }
 	public RecruitmentStatus Status { get; set; }
 }

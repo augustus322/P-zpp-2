@@ -5,7 +5,7 @@ namespace DatabaseService.Dtos;
 public class RecruitmentReadDto
 {
 	public int ID { get; set; }
-	public Candidate Candidate { get; set; }
-	public Employee Recruiter { get; set; }
+	public int CandidateID { get; set; }
+	public int RecruiterID { get; set; }
 	public RecruitmentStatus Status { get; set; }
 }
