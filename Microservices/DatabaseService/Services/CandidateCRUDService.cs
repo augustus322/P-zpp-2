@@ -19,15 +19,17 @@ namespace DatabaseService.Services
         {
             return await _repository.GetByIdAsync(id);
         }
-        public void Add(Candidate entity)
+        public async Task<Candidate?> AddAsync(Candidate entity)
         {
-            _repository.Add(entity);
-            _repository.SaveAsync();
+            var createdEntity = await _repository.Add(entity);
+            await _repository.SaveAsync();
+
+			return createdEntity;
         }
-        public void Update(Candidate entity)
+        public async Task Update(Candidate entity)
         {
             _repository.Update(entity);
-            _repository.SaveAsync();
+            await _repository.SaveAsync();
         }
         public async Task Delete(int id)
         {
