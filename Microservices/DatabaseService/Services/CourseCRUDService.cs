@@ -21,11 +21,11 @@ namespace DatabaseService.Services
         }
         public async Task<Course?> AddAsync(Course entity)
         {
-			var createdEntity = await _repository.Add(entity);
-			await _repository.SaveAsync();
+            var createdEntity = await _repository.Add(entity);
+            await _repository.SaveAsync();
 
-			return createdEntity;
-		}
+            return createdEntity;
+        }
         public async Task Update(Course entity)
         {
             _repository.Update(entity);
