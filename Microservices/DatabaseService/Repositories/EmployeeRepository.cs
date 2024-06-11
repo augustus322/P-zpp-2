@@ -33,12 +33,18 @@ namespace DatabaseService.Repositories
 
         public IQueryable<Employee> GetAll()
         {
-            return _context.Employees.AsQueryable();
+            return _context.Employees
+				.Include(e => e.Recruitments)
+				.ThenInclude(r => r.Candidate)
+				.AsQueryable();
         }
 
         public async Task<Employee?> GetByIdAsync(int id)
         {
-			return await _context.Employees.FirstOrDefaultAsync(e => e.ID == id);
+			return await _context.Employees
+				.Include(e => e.Recruitments)
+				.ThenInclude(r => r.Candidate)
+				.FirstOrDefaultAsync(e => e.ID == id);
         }
 
         public async Task SaveAsync()
