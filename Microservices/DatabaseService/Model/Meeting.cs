@@ -6,5 +6,5 @@ public class Meeting
     public string Topic { get; set; }
     public string Address { get; set; }
     public DateTime Date { get; set; }
-    public ICollection<Employee> Participants { get; set; }
+    public ICollection<Employee> Participants { get; set; } = new List<Employee>();
 }

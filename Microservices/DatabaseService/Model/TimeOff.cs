@@ -12,5 +12,5 @@ public class TimeOff
     public Employee Employee { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
-    public TimeOffStatus Status { get; set; }   
+    public TimeOffStatus Status { get; set; }
 }
