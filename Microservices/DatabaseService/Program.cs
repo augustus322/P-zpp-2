@@ -53,6 +53,8 @@ internal class Program
         builder.Services.AddScoped<SalaryCRUDService>();
         builder.Services.AddScoped<TimeOffCRUDService>();
 
+        // Automapper
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         //database
         var connection_string = builder.Configuration.GetConnectionString("DefaultConnection");
 

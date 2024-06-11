@@ -8,7 +8,7 @@ namespace DatabaseService.Data
         {
             context.Database.EnsureCreated();
 
-            if (context.Employees.Any())
+            if (context.Candidates.Any())
             {
                 return;
             }
@@ -17,11 +17,11 @@ namespace DatabaseService.Data
             {
                 new Candidate
                 {
-                    FirstName = "",
-                    LastName = "",
-                    Phone = "",
-                    Mail = "",
-                    Address = ""
+                    FirstName = "test",
+                    LastName = "candidate",
+                    Phone = "123456789",
+                    Email = "test@com",
+                    Address = "address"
                 }
             };
             foreach (var item in candidates)
