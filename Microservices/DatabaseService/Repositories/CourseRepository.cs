@@ -13,14 +13,18 @@ namespace DatabaseService.Repositories
             _context = context;
         }
 
-        public void Add(Course entity)
+        public async Task<Course?> Add(Course entity)
         {
-            _context.Add(entity);
-        }
+			var result = await _context.AddAsync(entity);
+
+			var createdEntity = result.Entity;
+
+			return createdEntity;
+		}
 
         public async Task DeleteAsync(int id)
         {
-            Course entity = _context.Courses.Find(id);
+            Course? entity = await GetByIdAsync(id);
             if (entity != null)
             {
                 _context.Courses.Remove(entity);
@@ -44,7 +48,7 @@ namespace DatabaseService.Repositories
 
         public void Update(Course entity)
         {
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.Update(entity);
         }
     }
 }

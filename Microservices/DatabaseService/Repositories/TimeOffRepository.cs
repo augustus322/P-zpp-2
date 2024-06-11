@@ -13,14 +13,18 @@ namespace DatabaseService.Repositories
             _context = context;
         }
 
-        public void Add(TimeOff entity)
+        public async Task<TimeOff?> Add(TimeOff entity)
         {
-            _context.Add(entity);
-        }
+			var result = await _context.AddAsync(entity);
+
+			var createdEntity = result.Entity;
+
+			return createdEntity;
+		}
 
         public async Task DeleteAsync(int id)
         {
-            TimeOff entity = _context.TimeOffs.Find(id);
+            TimeOff? entity = await GetByIdAsync(id);
             if (entity != null)
             {
                 _context.TimeOffs.Remove(entity);
@@ -44,7 +48,7 @@ namespace DatabaseService.Repositories
 
         public void Update(TimeOff entity)
         {
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.Update(entity);
         }
     }
 }

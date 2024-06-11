@@ -1,5 +1,6 @@
 ﻿using DatabaseService.Data;
 using DatabaseService.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseService.Repositories
 {
@@ -12,14 +13,18 @@ namespace DatabaseService.Repositories
             _context = context;
         }
 
-        public void Add(Employee entity)
+        public async Task<Employee?> Add(Employee entity)
         {
-            _context.Add(entity);
-        }
+			var result = await _context.AddAsync(entity);
+
+			var createdEntity = result.Entity;
+
+			return createdEntity;
+		}
 
         public async Task DeleteAsync(int id)
         {
-            Employee entity = _context.Employees.Find(id);
+            Employee? entity = await GetByIdAsync(id);
             if (entity != null)
             {
                 _context.Employees.Remove(entity);
@@ -33,17 +38,17 @@ namespace DatabaseService.Repositories
 
         public async Task<Employee?> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+			return await _context.Employees.FirstOrDefaultAsync(e => e.ID == id);
         }
 
         public async Task SaveAsync()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
         }
 
         public void Update(Employee entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
         }
     }
 }
