@@ -1,6 +1,4 @@
-﻿using DatabaseService.Model;
-
-namespace DatabaseService.Dtos;
+﻿namespace DatabaseService.Dtos;
 
 public class MeetingReadDto
 {
