@@ -47,8 +47,8 @@ const Kalendarz: React.FC = () => {
       <iframe
         src="https://calendar.google.com/calendar/embed?height=800&wkst=2&ctz=Europe%2FWarsaw&bgcolor=%238E24AA&showTz=0&title&showTitle=0&src=eW91cnR5cGljYWx3b3JraW5nZW1haWxAZ21haWwuY29t&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4ucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%2333B679&color=%230B8043"
         style={{ border: 'solid 1px #777', zIndex: 0 }}
-        width="1400"
-        height="700"
+        width="100%"
+        height="100%"
         frameBorder="0"
         scrolling="no"
       ></iframe>
