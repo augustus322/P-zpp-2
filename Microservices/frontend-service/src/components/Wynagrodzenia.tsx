@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+const mockedPaymentsData = [
+  {
+    id: "1",
+    name: "KAROLINA MĄKA",
+    type: "WYPŁATA",
+    status: "ROZPOCZĘTE",
+  },
+  {
+    id: "2",
+    name: "WIKTORIA MRÓZEK",
+    type: "WYPŁATA",
+    status: "ZAKOŃCZONE",
+  },
+  {
+    id: "3",
+    name: "DAWID MACHAJ",
+    type: "WYPŁATA",
+    status: "ZAKOŃCZONE",
+  },
+  {
+    id: "4",
+    name: "MIESZKO NIEZGODA",
+    type: "WYPŁATA",
+    status: "ZAKOŃCZONE",
+  },
+];
 
 function Wynagrodzenia() {
+  const [paymentsData, setPaymentsData] = useState(mockedPaymentsData);
+  useEffect(() => {
+    fetch("").then((response) => response.json());
+  }, []);
+
   const containerStyle: React.CSSProperties = {
     backgroundColor: "#F9F6F6",
     boxShadow: "0px 4px 4px 0px #00000040",
@@ -79,34 +111,24 @@ function Wynagrodzenia() {
         <div style={containerStyle}>
           <div style={columnsWrapperStyle}>
             <div style={columnContainerStyle}>
-              <div style={cellStyle}>1</div>
-              <div style={cellStyle}>2</div>
-              <div style={cellStyle}>3</div>
-              <div style={cellStyle}>4</div>
-
-              {/* Dodaj więcej wierszy tutaj */}
+              {paymentsData.map((data) => (
+                <div style={cellStyle}>{data.id}</div>
+              ))}
             </div>
             <div style={columnContainerStyle}>
-              <div style={cellStyle}>KAROLINA MĄKA</div>
-              <div style={cellStyle}>WIKTORIA MRÓZEK</div>
-              <div style={cellStyle}>DAWID MACHAJ</div>
-              <div style={cellStyle}>MIESZKO NIEZGODA</div>
-              {/* Dodaj więcej wierszy tutaj */}
+              {paymentsData.map((data) => (
+                <div style={cellStyle}>{data.name}</div>
+              ))}
             </div>
             <div style={columnContainerStyle}>
-              <div style={cellStyle}>WYPŁATA</div>
-              <div style={cellStyle}>WYPŁATA</div>
-              <div style={cellStyle}>WYPŁATA</div>
-              <div style={cellStyle}>WYPŁATA</div>
-
-              {/* Dodaj więcej wierszy tutaj */}
+              {paymentsData.map((data) => (
+                <div style={cellStyle}>{data.type}</div>
+              ))}
             </div>
             <div style={columnContainerStyle}>
-              <div style={cellStyle}>ROZPOCZĘTE </div>
-              <div style={cellStyle}>ZAKOŃCZONE </div>
-              <div style={cellStyle}>ZAKOŃCZONE</div>
-              <div style={cellStyle}>ZAKOŃCZONE</div>
-              {/* Dodaj więcej wierszy tutaj */}
+              {paymentsData.map((data) => (
+                <div style={cellStyle}>{data.status}</div>
+              ))}
             </div>
           </div>
         </div>

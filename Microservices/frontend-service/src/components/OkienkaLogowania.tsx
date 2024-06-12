@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
+
+const AUTH_API_DOMAIN = "http://localhost:5098";
 
 function StronaStartowa() {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const { setCurrentUser } = useCurrentUser();
+
   const containerStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
@@ -41,6 +48,22 @@ function StronaStartowa() {
     color: "#6A6A6A",
   };
 
+  const handleLoginClick = () => {
+    // TODO: trzeba sie upewnic ze endpoint jest git
+    const auth_endpoint = AUTH_API_DOMAIN + "/api/Auth";
+    const body = JSON.stringify({ login: login, password: password });
+    console.log({ auth_endpoint, body });
+    fetch(auth_endpoint, { method: "POST", body }).then((response) => {
+      console.log({ response });
+      // TODO: trzeba dopisac endpoint do pobrania danych zalogowanego usera
+      // const user_endpoint = "";
+      // fetch(user_endpoint).then((response) => {
+      //   const parsedUser = response.json();
+      //   setCurrentUser(parsedUser);
+      // });
+    });
+  };
+
   return (
     <div style={containerStyle}>
       <h1 style={headerStyle}>HR360</h1>
@@ -49,6 +72,7 @@ function StronaStartowa() {
         type="text"
         placeholder="login"
         style={inputStyle}
+        onChange={(e) => setLogin(e.target.value)}
         onFocus={(e) => (e.target.placeholder = "")}
         onBlur={(e) => (e.target.placeholder = "login")}
       />
@@ -56,6 +80,7 @@ function StronaStartowa() {
         type="password"
         placeholder="hasło"
         style={inputStyle}
+        onChange={(e) => setPassword(e.target.value)}
         onFocus={(e) => (e.target.placeholder = "")}
         onBlur={(e) => (e.target.placeholder = "hasło")}
       />
@@ -70,6 +95,7 @@ function StronaStartowa() {
           fontSize: "25px",
           boxShadow: "0px 4px 4px 0px #00000040",
         }}
+        onClick={handleLoginClick}
       >
         Log in
       </button>

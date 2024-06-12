@@ -14,58 +14,64 @@ import StronaHRUrlopy from "./pages/StronaHRUrlopy";
 import StronaHRRekrutacja from "./pages/StronaHRRekrutacja";
 import StronaSzkolenia from "./pages/StronaSzkolenia";
 import StronaGłówna from "./pages/StronaGłówna";
+import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<StronaLogowania />}></Route>
-          <Route path="/login" element={<StronaLogowania />}></Route>
-          <Route path="/data" element={<FormularzOsobowy />}></Route>
-          <Route
-            path="/rekrutacja"
-            element={<StronaRekrutacji></StronaRekrutacji>}
-          ></Route>
-          <Route
-            path="/główna"
-            element={<StronaGłówna></StronaGłówna>}
-          ></Route>
-          <Route
-            path="/szkolenia"
-            element={<StronaSzkolenia></StronaSzkolenia>}
-          ></Route>
-          <Route
-            path="/kalendarz"
-            element={<StronaKalendarz></StronaKalendarz>}
-          ></Route>
-          <Route path="/urlopy" element={<StronaUrlopy></StronaUrlopy>}></Route>
-          <Route
-            path="/wynagrodzenia"
-            element={<StronaWynagrodzenia></StronaWynagrodzenia>}
-          ></Route>
-          <Route
-            path="/dataAdmin"
-            element={<AdminStronaDaneOsobowe></AdminStronaDaneOsobowe>}
-          ></Route>
-          <Route
-            path="wynagrodzeniaAdmin"
-            element={<AdminStronaWynagrodzenia></AdminStronaWynagrodzenia>}
-          ></Route>
-          <Route
-            path="/wniosek-o-urlop"
-            element={<StronaWniosekOUrlop></StronaWniosekOUrlop>}
-          ></Route>
-          <Route
-            path="/urlopy-hr"
-            element={<StronaHRUrlopy></StronaHRUrlopy>}
-          ></Route>
-          <Route
-            path="/rekrutacja-hr"
-            element={<StronaHRRekrutacja></StronaHRRekrutacja>}
-          ></Route>
-        </Routes>
-      </BrowserRouter>
+      <CurrentUserProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<StronaLogowania />}></Route>
+            <Route path="/login" element={<StronaLogowania />}></Route>
+            <Route path="/data" element={<FormularzOsobowy />}></Route>
+            <Route
+              path="/rekrutacja"
+              element={<StronaRekrutacji></StronaRekrutacji>}
+            ></Route>
+            <Route
+              path="/główna"
+              element={<StronaGłówna></StronaGłówna>}
+            ></Route>
+            <Route
+              path="/szkolenia"
+              element={<StronaSzkolenia></StronaSzkolenia>}
+            ></Route>
+            <Route
+              path="/kalendarz"
+              element={<StronaKalendarz></StronaKalendarz>}
+            ></Route>
+            <Route
+              path="/urlopy"
+              element={<StronaUrlopy></StronaUrlopy>}
+            ></Route>
+            <Route
+              path="/wynagrodzenia"
+              element={<StronaWynagrodzenia></StronaWynagrodzenia>}
+            ></Route>
+            <Route
+              path="/dataAdmin"
+              element={<AdminStronaDaneOsobowe></AdminStronaDaneOsobowe>}
+            ></Route>
+            <Route
+              path="wynagrodzeniaAdmin"
+              element={<AdminStronaWynagrodzenia></AdminStronaWynagrodzenia>}
+            ></Route>
+            <Route
+              path="/wniosek-o-urlop"
+              element={<StronaWniosekOUrlop></StronaWniosekOUrlop>}
+            ></Route>
+            <Route
+              path="/urlopy-hr"
+              element={<StronaHRUrlopy></StronaHRUrlopy>}
+            ></Route>
+            <Route
+              path="/rekrutacja-hr"
+              element={<StronaHRRekrutacja></StronaHRRekrutacja>}
+            ></Route>
+          </Routes>
+        </BrowserRouter>
+      </CurrentUserProvider>
     </div>
   );
 }

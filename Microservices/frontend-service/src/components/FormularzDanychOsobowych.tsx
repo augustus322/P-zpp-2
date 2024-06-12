@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 import NavBar from "../components/NavBar";
 
+const USER_API_DOMAIN = "http://localhost:5116";
+
 function FormularzOsobowy() {
+  const { currentUser } = useCurrentUser();
+
   const containerStyle: React.CSSProperties = {
     backgroundColor: "#F9F6F6",
     boxShadow: "0px 4px 4px 0px #00000040",
@@ -75,21 +80,30 @@ function FormularzOsobowy() {
 
   // State to manage the form data and edit mode
   const [isEditing, setIsEditing] = useState(false);
-  const [userData, setUserData] = useState({
-    name: "Jan",
-    surname: "Kowalski",
-    email: "jan.kowalski@example.com",
-    phoneNumber: "+48 123 456 789",
-    personalNumber: "1234567890",
-    position: "Developer",
-  });
+  const [userEmail, setUserEmail] = useState(currentUser?.email || "");
+  const [userPhone, setUserPhone] = useState(currentUser?.phone || "");
 
   // Handlers for editing mode and saving changes
   const handleEditClick = () => setIsEditing(true);
-  const handleSaveClick = () => setIsEditing(false);
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    setUserData((prevState) => ({ ...prevState, [id]: value }));
+  const handleSaveClick = () => {
+    console.log({ currentUser });
+    if (!currentUser?.id) {
+      return;
+    }
+
+    setIsEditing(false);
+    const newUserData = { ...currentUser, email: userEmail, phone: userPhone };
+    console.log({ newUserData });
+
+    // TODO: trzeba dopisac endpoint             👇🏿 tutaj
+    const updateUserEndpoint = USER_API_DOMAIN + "/" + currentUser.id;
+    // TODO: trzeba dopisac endpoint             🖕🏾 tutaj
+    if (currentUser) {
+      fetch(updateUserEndpoint, {
+        method: "PUT",
+        body: JSON.stringify(newUserData),
+      });
+    }
   };
 
   return (
@@ -100,64 +114,64 @@ function FormularzOsobowy() {
         <div style={containerStyle}>
           <div style={formStyle}>
             <div style={labelColumnStyle}>
-              <label htmlFor="inputName" className="col-form-label">
+              <label htmlFor="firstName" className="col-form-label">
                 IMIĘ/IMIONA
               </label>
-              <label htmlFor="inputSurname" className="col-form-label">
+              <label htmlFor="lastName" className="col-form-label">
                 NAZWISKO
               </label>
-              <label htmlFor="inputEmail" className="col-form-label">
+              <label htmlFor="email" className="col-form-label">
                 E-MAIL
               </label>
-              <label htmlFor="inputNrTel" className="col-form-label">
+              <label htmlFor="phone" className="col-form-label">
                 NR TELEFONU
               </label>
-              <label htmlFor="inputNrOsobowy" className="col-form-label">
+              <label htmlFor="id" className="col-form-label">
                 NR OSOBOWY
               </label>
-              <label htmlFor="inputStanowisko" className="col-form-label">
+              <label htmlFor="position" className="col-form-label">
                 STANOWISKO
               </label>
             </div>
 
             <div style={inputColumnStyle}>
-              <span id="inputName" className="form-control">
-                {userData.name}
+              <span id="firstName" className="form-control">
+                {currentUser?.firstName}
               </span>
-              <span id="inputSurname" className="form-control">
-                {userData.surname}
+              <span id="lastName" className="form-control">
+                {currentUser?.lastName}
               </span>
               {isEditing ? (
                 <input
                   id="email"
                   type="email"
                   className="form-control"
-                  value={userData.email}
-                  onChange={handleInputChange}
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
                 />
               ) : (
-                <span id="inputEmail" className="form-control">
-                  {userData.email}
+                <span id="email" className="form-control">
+                  {userEmail}
                 </span>
               )}
               {isEditing ? (
                 <input
-                  id="phoneNumber"
+                  id="phone"
                   type="tel"
                   className="form-control"
-                  value={userData.phoneNumber}
-                  onChange={handleInputChange}
+                  value={userPhone}
+                  onChange={(e) => setUserPhone(e.target.value)}
                 />
               ) : (
-                <span id="inputNrTel" className="form-control">
-                  {userData.phoneNumber}
+                <span id="phone" className="form-control">
+                  {userPhone}
                 </span>
               )}
-              <span id="inputNrOsobowy" className="form-control">
-                {userData.personalNumber}
+              <span id="id" className="form-control">
+                {currentUser?.id}
               </span>
-              <span id="inputStanowisko" className="form-control">
-                {userData.position}
+              <span id="position" className="form-control">
+                {currentUser?.position}
               </span>
             </div>
 
