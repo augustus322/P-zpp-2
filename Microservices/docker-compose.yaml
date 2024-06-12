@@ -140,6 +140,5 @@ services:
     # expose:
     #   - 80
     restart: unless-stopped
-  
 volumes:
   postgres-data:
