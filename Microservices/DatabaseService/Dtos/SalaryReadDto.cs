@@ -5,7 +5,7 @@ namespace DatabaseService.Dtos;
 public class SalaryReadDto
 {
 	public int ID { get; set; }
-	public Employee Employee { get; set; }
-	public double Ammount { get; set; }
+	public int EmployeeID { get; set; }
+	public double Amount { get; set; }
 	public DateTime PaymentDate { get; set; }
 }
