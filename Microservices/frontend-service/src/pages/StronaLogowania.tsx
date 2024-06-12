@@ -5,7 +5,6 @@ import App from "../App";
 function StronaLogowania() {
   return (
     <div>
-      <NavBar></NavBar>
       <StronaStartowa></StronaStartowa>
     </div>
   );

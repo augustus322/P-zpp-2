@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../components/NavBar";
 
 const containerStyle: React.CSSProperties = {
-  backgroundColor: "#F9F6F6",
+  backgroundColor: "#",
   boxShadow: "0px 4px 4px 0px #00000040",
   padding: "15px",
   borderRadius: "10px",
