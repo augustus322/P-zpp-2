@@ -25,187 +25,95 @@ const Glowna = () => {
     padding: "15px",
     borderRadius: "10px",
     maxWidth: "1000px",
-    margin: "20px auto", // Wyśrodkowanie poziome
+    margin: "100px auto", // Wyśrodkowanie poziome i dodatkowy margines z góry
+  };
+
+  const gridContainerStyle: React.CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)", // Dwie kolumny
+    gap: "20px",
+    alignItems: "center",
+  };
+
+  const wideGridItemStyle: React.CSSProperties = {
+    gridColumn: "span 2", // Rozciągnięcie na dwie kolumny
+    background: "#FBFBFB",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    borderRadius: "10px",
+    overflow: "hidden",
+    padding: "20px",
+    textAlign: "center",
+  };
+
+  const gridItemStyle: React.CSSProperties = {
+    background: "#FBFBFB",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    borderRadius: "10px",
+    overflow: "hidden",
+    height: "366px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   };
 
   return (
     <div style={containerStyle}>
-      {/* KAFELKI NA LEWEJ STRONIE */}
-      <div>
-        {/* Kafelek 1 */}
+      <div style={gridContainerStyle}>
         <div
           style={{
-            position: "absolute",
-            width: "510px",
-            height: "366px",
-            left: "267px",
-            top: "470px",
-            background: "#FBFBFB",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-            borderRadius: "10px",
-            overflow: "hidden", // Zapewnia, że obrazek nie wychodzi poza ramy kafelka
+            ...wideGridItemStyle,
+            cursor: "pointer",
           }}
+          onClick={handleNavigateToTrainings}
         >
-          {/* Obrazek kalendarza */}
+          <div
+            style={{
+              fontSize: "30px",
+              color: "#4B398D",
+              marginBottom: "10px",
+            }}
+          >
+            TWOJE AKTYWNE SZKOLENIA
+          </div>
+          <div style={{ fontSize: "20px", color: "#000000" }}>
+            SZKOLENIE Z BEZPIECZEŃSTWA I HIGIENY PRACY
+          </div>
+        </div>
+        <div style={gridItemStyle}>
           <img
             src="https://i.pinimg.com/736x/90/4c/39/904c39c4ba8b6775957f1dab81b87de4.jpg"
             alt="Kalendarz"
             style={{
-              width: "510px",
-              height: "366px",
+              width: "100%",
+              height: "100%",
               objectFit: "cover",
               cursor: "pointer",
             }}
             onClick={handleNavigateToCalendar}
           />
         </div>
-
-        {/* Pozostała część kodu */}
-        {/* Kafelek 2 */}
-        <div
-          style={{
-            position: "absolute",
-            width: "510px",
-            height: "366px",
-            left: "888px",
-            top: "470px",
-            background: "#FBFBFB",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-            borderRadius: "10px",
-          }}
-        ></div>
-
-        {/* Rectangle 3 */}
-        <div
-          style={{
-            position: "absolute",
-            width: "1137px",
-            height: "281px",
-            left: "267px",
-            top: "151px",
-            background: "#FBFBFB",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-            borderRadius: "10px",
-            display: "flex",
-            alignItems: "center", // Wyśrodkuj obrazek w pionie
-          }}
-        >
-          {/* Obrazek */}
-          <img
-            src="https://www.shutterstock.com/shutterstock/videos/1015550863/thumb/1.jpg?ip=x480"
-            alt="Obrazek"
+        <div style={gridItemStyle}>
+          <div
             style={{
-              borderRadius: "50%",
-              width: "420px",
-              height: "250px",
-              marginLeft: "auto",
+              ...commonTextStyle,
+              fontSize: "25px",
+              lineHeight: "45px",
+              color: "#4B398D",
+              textAlign: "center",
             }}
-          />
-        </div>
-
-        {/* Rectangle 6 */}
-        <div
-          style={{
-            position: "absolute",
-            width: "510px",
-            height: "366px",
-            left: "888px",
-            top: "470px",
-            background: "#FBFBFB",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-            borderRadius: "10px",
-          }}
-        ></div>
-
-        {/* TWOJE AKTYWNE SZKOLENIA */}
-        <div
-          style={{
-            ...commonTextStyle,
-            position: "absolute",
-            width: "478px",
-            height: "87px",
-            left: "289px",
-            top: "187px",
-            fontSize: "30px",
-            lineHeight: "95px",
-            color: "#4B398D",
-          }}
-          onClick={handleNavigateToTrainings}
-        >
-          TWOJE AKTYWNE SZKOLENIA
-        </div>
-        <div
-          style={{
-            ...commonTextStyle,
-            position: "absolute",
-            width: "341px",
-            height: "37px",
-            left: "289px",
-            top: "308px",
-            fontSize: "20px",
-            lineHeight: "40px",
-          }}
-        >
-          SZKOLENIE Z BEZPIECZEŃSTWA I HIGIENY PRACY
-        </div>
-
-        {/* URLOPY */}
-        <div
-          style={{
-            ...commonTextStyle,
-            position: "absolute",
-            width: "466px",
-            height: "300px",
-            left: "910px",
-            top: "500px",
-            background: "#FFFFFF",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-            borderRadius: "10px",
-            fontFamily: "Aksara Bali Galang, sans-serif",
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "25px",
-            lineHeight: "45px",
-            color: "#4B398D",
-            cursor: "pointer", // Zmieniamy kursor na wskaźnik, aby pokazać, że element jest klikalny
-          }}
-          onClick={handleApplyForLeave} // Wywołujemy funkcję po kliknięciu
-        >
-          URLOPY
-        </div>
-
-        {/* POZOSTAŁO CI */}
-        <div
-          style={{
-            ...commonTextStyle,
-            position: "absolute",
-            width: "183px",
-            height: "45px",
-            left: "1058px",
-            top: "601px",
-            fontSize: "25px",
-            lineHeight: "50px",
-            color: "#000000",
-          }}
-        >
-          POZOSTAŁO CI
-        </div>
-
-        {/* 19/21 DNI URLOPU */}
-        <div
-          style={{
-            ...commonTextStyle,
-            position: "absolute",
-            width: "237px",
-            height: "48px",
-            left: "1031px",
-            top: "723px",
-            fontSize: "25px",
-            lineHeight: "30px",
-            color: "#5B40FF",
-          }}
-        >
-          19/21 DNI URLOPU
+            onClick={handleApplyForLeave}
+          >
+            URLOPY
+            <div
+              style={{
+                fontSize: "20px",
+                color: "#000000",
+                marginTop: "20px",
+              }}
+            >
+              POZOSTAŁO CI 19/21 DNI URLOPU
+            </div>
+          </div>
         </div>
       </div>
     </div>

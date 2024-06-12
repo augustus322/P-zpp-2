@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["testing-library__jest-dom"],
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
