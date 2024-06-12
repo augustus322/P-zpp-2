@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "../components/NavBar";
+import { useState, useEffect } from "react";
 
 const containerStyle: React.CSSProperties = {
   backgroundColor: "#F9F6F6",
@@ -80,6 +81,12 @@ const requests = [
 ];
 
 function HRUrlopyProsby() {
+
+    useState(()=>{
+      fetch("#").then((res)=>console.log(res.json)) 
+    })
+
+
   const handleApprove = (id: number) => {
     // Implementacja logiki zatwierdzania wniosku
     console.log(`Zatwierdzono wniosek o ID: ${id}`);

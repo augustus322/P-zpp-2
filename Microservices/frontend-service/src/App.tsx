@@ -54,7 +54,7 @@ function App() {
               element={<AdminStronaDaneOsobowe></AdminStronaDaneOsobowe>}
             ></Route>
             <Route
-              path="wynagrodzeniaAdmin"
+              path="/wynagrodzeniaAdmin"
               element={<AdminStronaWynagrodzenia></AdminStronaWynagrodzenia>}
             ></Route>
             <Route

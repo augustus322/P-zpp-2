@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import NavBar from "../components/NavBar";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import Modal from "react-modal";
 
 const containerStyle: React.CSSProperties = {
@@ -60,25 +59,29 @@ const buttonStyle: React.CSSProperties = {
   borderRadius: "5px",
 };
 
-const modalStyle: React.CSSProperties = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    width: "400px",
-    padding: "20px",
-    border: "none",
-    borderRadius: "10px",
-    backgroundColor: "#FFF",
-    boxShadow: "0px 4px 4px 0px #00000040",
-    fontFamily: "Aksara Bali Galang, sans-serif",
-  },
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
+const contentStyle: React.CSSProperties = {
+  top: "50%",
+  left: "50%",
+  right: "auto",
+  bottom: "auto",
+  marginRight: "-50%",
+  transform: "translate(-50%, -50%)",
+  width: "400px",
+  padding: "20px",
+  border: "none",
+  borderRadius: "10px",
+  backgroundColor: "#FFF",
+  boxShadow: "0px 4px 4px 0px #00000040",
+  fontFamily: "Aksara Bali Galang, sans-serif",
+};
+
+const overlayStyle: React.CSSProperties = {
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+};
+
+const modalStyle = {
+  content: contentStyle,
+  overlay: overlayStyle,
 };
 
 function AdminWynagrodzenia() {
@@ -91,7 +94,7 @@ function AdminWynagrodzenia() {
   });
   const [showModal, setShowModal] = useState(false);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -99,7 +102,7 @@ function AdminWynagrodzenia() {
     }));
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     setShowModal(true);
   };

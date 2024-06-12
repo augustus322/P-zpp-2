@@ -1,36 +1,55 @@
 import React, { useState, useEffect } from "react";
+import { apiDomains } from "../api/domains";
 
-const mockedPaymentsData = [
+const mockedSalaries = [
   {
     id: "1",
-    name: "KAROLINA MĄKA",
-    type: "WYPŁATA",
-    status: "ROZPOCZĘTE",
+    firstName: "KAROLINA",
+    lastName: "MĄKA",
+    amount: 2137.0,
+    paymentDate: "2024-06-12T12:30:00Z",
   },
   {
     id: "2",
-    name: "WIKTORIA MRÓZEK",
-    type: "WYPŁATA",
-    status: "ZAKOŃCZONE",
+    firstName: "WIKTORIA",
+    lastName: "MRÓZEK",
+    amount: 420.0,
+    paymentDate: "2024-06-12T12:30:00Z",
   },
   {
     id: "3",
-    name: "DAWID MACHAJ",
-    type: "WYPŁATA",
-    status: "ZAKOŃCZONE",
+    firstName: "DAWID",
+    lastName: "MACHAJ",
+    amount: 2137.0,
+    paymentDate: "2024-06-12T12:30:00Z",
   },
   {
     id: "4",
-    name: "MIESZKO NIEZGODA",
-    type: "WYPŁATA",
-    status: "ZAKOŃCZONE",
+    firstName: "MIESZKO",
+    lastName: "NIEZGODA",
+    amount: 420.0,
+    paymentDate: "2024-06-12T12:30:00Z",
   },
 ];
 
+interface EmployeeSalary {
+  id: string;
+  firstName?: string;
+  lastName?: string;
+  amount?: number;
+  paymentDate?: string;
+}
+
 function Wynagrodzenia() {
-  const [paymentsData, setPaymentsData] = useState(mockedPaymentsData);
+  const [paymentsData, setPaymentsData] =
+    useState<EmployeeSalary[]>(mockedSalaries);
+
   useEffect(() => {
-    fetch("").then((response) => response.json());
+    const salaryEndpoint = apiDomains.salary + "/salaryServiceController/";
+    fetch(salaryEndpoint).then((response) => {
+      const parsedResponse = response.json();
+      setPaymentsData(parsedResponse);
+    });
   }, []);
 
   const containerStyle: React.CSSProperties = {
@@ -102,32 +121,48 @@ function Wynagrodzenia() {
       <div style={wrapperStyle}>
         <div style={titleStyle}>WYNAGRODZENIA</div>
         <div style={headerRowStyle}>
-          <div style={headerCellStyle}>LP</div>
-          <div style={headerCellStyle}>PRACOWNIK</div>
-          <div style={headerCellStyle}>TYP</div>
-          <div style={headerCellStyle}>STATUS</div>
+          <div style={headerCellStyle}>ID</div>
+          <div style={headerCellStyle}>IMIĘ</div>
+          <div style={headerCellStyle}>NAZWISKO</div>
+          <div style={headerCellStyle}>KWOTA</div>
+          <div style={headerCellStyle}>DATA</div>
         </div>
         <div style={spacerStyle}></div> {/* Ramka w kolorze #F3F3F3 */}
         <div style={containerStyle}>
           <div style={columnsWrapperStyle}>
             <div style={columnContainerStyle}>
               {paymentsData.map((data) => (
-                <div style={cellStyle}>{data.id}</div>
+                <div key={data.id} style={cellStyle}>
+                  {data.id}
+                </div>
               ))}
             </div>
             <div style={columnContainerStyle}>
               {paymentsData.map((data) => (
-                <div style={cellStyle}>{data.name}</div>
+                <div key={data.id} style={cellStyle}>
+                  {data.firstName}
+                </div>
               ))}
             </div>
             <div style={columnContainerStyle}>
               {paymentsData.map((data) => (
-                <div style={cellStyle}>{data.type}</div>
+                <div key={data.id} style={cellStyle}>
+                  {data.lastName}
+                </div>
               ))}
             </div>
             <div style={columnContainerStyle}>
               {paymentsData.map((data) => (
-                <div style={cellStyle}>{data.status}</div>
+                <div key={data.id} style={cellStyle}>
+                  {data.amount}
+                </div>
+              ))}
+            </div>
+            <div style={columnContainerStyle}>
+              {paymentsData.map((data) => (
+                <div key={data.id} style={cellStyle}>
+                  {data.paymentDate}
+                </div>
               ))}
             </div>
           </div>

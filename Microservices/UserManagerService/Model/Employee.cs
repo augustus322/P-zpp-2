@@ -2,7 +2,8 @@
 
 public enum EmployeePosition
 {
-
+    Szef,
+    Programista15k,
 }
 public class Employee
 {
