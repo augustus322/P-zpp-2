@@ -27,11 +27,23 @@ const apiMeetings = axiosMeetings.create({
 import axiosRecruitment from "axios";
 
 const apiRecruitment = axiosRecruitment.create({
-  baseURL: "http://localhost:5116/api",
+  baseURL: "http://localhost:5230/api",
 });
 
 import axiosSalary from "axios";
 
 const apiSalary = axiosSalary.create({
   baseURL: "http://localhost:5077/api",
+});
+
+import axiosTimeOff from "axios";
+
+const apiTimeOff = axiosTimeOff.create({
+  baseURL: "http://localhost:5121/api",
+});
+
+import axiosUserManager from "axios";
+
+const apiUserManager = axiosUserManager.create({
+  baseURL: "http://localhost:5116/api",
 });
