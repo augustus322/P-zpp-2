@@ -45,12 +45,27 @@ function Wynagrodzenia() {
     useState<EmployeeSalary[]>(mockedSalaries);
 
   useEffect(() => {
-    const salaryEndpoint = apiDomains.salary + "/salaryServiceController/";
-    fetch(salaryEndpoint).then((response) => {
-      const parsedResponse = response.json();
-      setPaymentsData(parsedResponse);
-    });
+    const fetchSalaries = async () => {
+      const salaryEndpoint = apiDomains.salary + "/salaryServiceController/";
+      try {
+        const response = await fetch(salaryEndpoint);
+        const parsedResponse = await response.json();
+        setPaymentsData(parsedResponse);
+      } catch (error) {
+        console.error("Error fetching salaries:", error);
+      }
+    };
+
+    fetchSalaries();
   }, []);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("pl-PL") + " " + date.toLocaleTimeString("pl-PL", {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
 
   const containerStyle: React.CSSProperties = {
     backgroundColor: "#F9F6F6",
@@ -161,7 +176,7 @@ function Wynagrodzenia() {
             <div style={columnContainerStyle}>
               {paymentsData.map((data) => (
                 <div key={data.id} style={cellStyle}>
-                  {data.paymentDate}
+                  {formatDate(data.paymentDate!)}
                 </div>
               ))}
             </div>

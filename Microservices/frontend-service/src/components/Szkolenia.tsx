@@ -58,7 +58,7 @@ function Szkolenia() {
   };
 
   const handleApplyForLeave = () => {
-    window.location.href = "http://localhost:5173/nowe-szkolenia";
+    window.location.href = "http://localhost:8080/nowe-szkolenia";
   };
 
   const szkolenia = [

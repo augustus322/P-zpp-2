@@ -49,7 +49,6 @@ function StronaStartowa() {
   };
 
   const handleLoginClick = () => {
-    // TODO: trzeba sie upewnic ze endpoint jest git
     const auth_endpoint = AUTH_API_DOMAIN + "/api/Auth";
     const body = JSON.stringify({ login: login, password: password });
     console.log({ auth_endpoint, body });
@@ -62,6 +61,10 @@ function StronaStartowa() {
       //   setCurrentUser(parsedUser);
       // });
     });
+  };
+
+  const handleRegisterClick = () => {
+    window.location.href = "http://localhost:8080/rekrutacja";
   };
 
   return (
@@ -84,21 +87,38 @@ function StronaStartowa() {
         onFocus={(e) => (e.target.placeholder = "")}
         onBlur={(e) => (e.target.placeholder = "hasło")}
       />
-      <button
-        className="btn btn-primary"
-        type="submit"
-        style={{
-          background: "#5B40FF",
-          fontFamily: "Aksara Bali Galang, sans-serif",
-          border: "none",
-          margin: "10px",
-          fontSize: "25px",
-          boxShadow: "0px 4px 4px 0px #00000040",
-        }}
-        onClick={handleLoginClick}
-      >
-        Log in
-      </button>
+      <div style={{ display: "flex", gap: "10px" }}>
+        <button
+          className="btn btn-primary"
+          type="submit"
+          style={{
+            background: "#5B40FF",
+            fontFamily: "Aksara Bali Galang, sans-serif",
+            border: "none",
+            margin: "10px",
+            fontSize: "25px",
+            boxShadow: "0px 4px 4px 0px #00000040",
+          }}
+          onClick={handleLoginClick}
+        >
+          Log in
+        </button>
+        <button
+          className="btn btn-secondary"
+          type="button"
+          style={{
+            background: "#5B40FF",
+            fontFamily: "Aksara Bali Galang, sans-serif",
+            border: "none",
+            margin: "10px",
+            fontSize: "25px",
+            boxShadow: "0px 4px 4px 0px #00000040",
+          }}
+          onClick={handleRegisterClick}
+        >
+          Register
+        </button>
+      </div>
     </div>
   );
 }
