@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
     networks:
       msvnetwork:
-        ipv4_address: 172.20.0.1
+        ipv4_address: 172.20.0.14
 
   auth-service:
     build:
@@ -37,9 +37,13 @@ services:
     build:
       context: .
       dockerfile: frontend-service/Dockerfile
+      # possible targets are 'dev' and 'prod'
+      target: prod
     networks:
       msvnetwork:
         ipv4_address: 172.20.0.3
+    ports:
+      - 5173:8080
 
   calendar-service:
     build:
@@ -140,5 +144,6 @@ services:
     # expose:
     #   - 80
     restart: unless-stopped
+
 volumes:
   postgres-data:
