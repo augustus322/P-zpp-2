@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace CourseService.Controllers
         private readonly ILogger<CourseController> _logger;
         private readonly List<Course> _courses;
         private readonly IHttpClientFactory _httpClientFactory;
+
+        private readonly string courseServiceBaseAddress = "http://localhost:5173/szkolenia";
+        private readonly string calendarServiceBaseAddress = "http://localhost:5173/kalendarz";
 
         public CourseController(ILogger<CourseController> logger, IHttpClientFactory httpClientFactory)
         {
@@ -42,15 +46,13 @@ namespace CourseService.Controllers
 
             if (request.TrainerId != null)
             {
-                builder.SetTrainer(request.TrainerId);
+                builder.SetTrainer(request.TrainerId.Value);
             }
 
             var course = builder.Build();
-            _courses.Add(course); // Add the new course to the list
+            _courses.Add(course);
             return Ok();
         }
-
-        //baseAddress+ - dodać, tylko jakie jest ip?
 
         // Schedule a course by making an HTTP request to another microservice
         [HttpPost("courses/{id}/schedule")]
@@ -66,10 +68,9 @@ namespace CourseService.Controllers
                 Title = course.Title,
                 DateTime = dateTime
             };
-            var content = new StringContent(JsonSerializer.Serialize(meetingRequest), System.Text.Encoding.UTF8, "appsettings/json");
+            var content = new StringContent(JsonSerializer.Serialize(meetingRequest), System.Text.Encoding.UTF8, "application/json");
 
-           
-            var response = await client.PostAsync(baseAddress+"coursecalendarcontroller/ScheduleCourse", content);
+            var response = await client.PostAsync($"{calendarServiceBaseAddress}/ScheduleCourse", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -85,7 +86,7 @@ namespace CourseService.Controllers
         public async Task<IActionResult> GetCalendarEvents()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync(baseAddress+"https://calendarservice/api/calendar/events"); 
+            var response = await client.GetAsync($"{calendarServiceBaseAddress}/api/calendar/events");
 
             if (response.IsSuccessStatusCode)
             {
@@ -103,8 +104,7 @@ namespace CourseService.Controllers
             var client = _httpClientFactory.CreateClient();
             var content = new StringContent(JsonSerializer.Serialize(request), System.Text.Encoding.UTF8, "application/json");
 
-            
-            var response = await client.PostAsync(baseAddress+"https://calendarservice/api/calendar/events", content);
+            var response = await client.PostAsync($"{calendarServiceBaseAddress}/api/calendar/events", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -114,6 +114,8 @@ namespace CourseService.Controllers
             return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
         }
     }
+}
+
 
     // Builder pattern for creating Course objects
     public class CourseBuilder
@@ -198,3 +200,5 @@ namespace CourseService.Controllers
         public DateTime EndDate { get; set; }
     }
 }
+
+

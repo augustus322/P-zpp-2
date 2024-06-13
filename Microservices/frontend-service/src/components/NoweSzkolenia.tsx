@@ -6,7 +6,7 @@ const containerStyle: React.CSSProperties = {
   padding: "20px",
   borderRadius: "10px",
   maxWidth: "1000px",
-  margin: "20px auto", // Wyśrodkowanie poziome
+  margin: "20px auto",
 };
 
 const formStyle: React.CSSProperties = {
@@ -15,32 +15,32 @@ const formStyle: React.CSSProperties = {
   alignItems: "center",
   fontFamily: "Aksara Bali Galang, sans-serif",
   fontSize: "18px",
-  gap: "20px", // Odstępy między kolumnami
-  marginBottom: "20px", // Odstęp między formularzami
+  gap: "20px",
+  marginBottom: "20px",
 };
 
 const labelColumnStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  gap: "23px", // Odstęp między etykietami
+  gap: "23px",
   textAlign: "left",
 };
 
 const inputColumnStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  gap: "10px", // Odstęp między polami
+  gap: "10px",
 };
 
 const headerStyle: React.CSSProperties = {
   fontFamily: "Aksara Bali Galang, sans-serif",
   fontSize: "20px",
-  textAlign: "left", // Wyśrodkowanie tekstu
-  marginBottom: "10px", // Odstęp poniżej nagłówka
+  textAlign: "left",
+  marginBottom: "10px",
 };
 const wrapperStyle: React.CSSProperties = {
   maxWidth: "1000px",
-  margin: "50px auto", // Wyśrodkowanie kontenera i odstęp od góry
+  margin: "50px auto",
   padding: "20px",
 };
 
@@ -60,10 +60,10 @@ const buttonStyle: React.CSSProperties = {
 function NoweSzkolenia() {
   const [formData, setFormData] = useState({
     nazwa: "",
-    status: "",
+    status: "planowane", // Default value
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -71,12 +71,31 @@ function NoweSzkolenia() {
     }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Tutaj możesz dodać logikę obsługi dodawania nowego szkolenia
-    console.log("Dodawanie nowego szkolenia:", formData);
-    // Wyczyść formularz po dodaniu szkolenia
-    setFormData({ nazwa: "", status: "" });
+    try {
+      const response = await fetch("http://localhost:5173/szkolenia/courses", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: formData.nazwa,
+          description: formData.status,
+          startDate: new Date().toISOString(), // Example value, replace with actual date
+          endDate: new Date().toISOString(), // Example value, replace with actual date
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+
+      console.log("Dodawanie nowego szkolenia:", formData);
+      setFormData({ nazwa: "", status: "planowane" }); // Reset form after successful submission
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -97,13 +116,16 @@ function NoweSzkolenia() {
                 value={formData.nazwa}
                 onChange={handleInputChange}
               />
-              <input
-                type="text"
+              <select
                 id="status"
                 className="form-control"
                 value={formData.status}
                 onChange={handleInputChange}
-              />
+              >
+                <option value="planowane">Planowane</option>
+                <option value="rozpoczęte">Rozpoczęte</option>
+                <option value="zakończone">Zakończone</option>
+              </select>
             </div>
             <div>
               <button type="submit" style={buttonStyle}>
