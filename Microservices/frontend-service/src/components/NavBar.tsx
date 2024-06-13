@@ -138,6 +138,15 @@ function NavBar() {
                     SZKOLENIA
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="http://localhost:8080/rejestracja"
+                    style={navLinkStyle}
+                  >
+                    REJESTRACJA
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

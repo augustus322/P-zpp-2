@@ -64,7 +64,7 @@ function StronaStartowa() {
   };
 
   const handleRegisterClick = () => {
-    window.location.href = "http://localhost:8080/rekrutacja";
+    window.location.href = "http://localhost:8080/rejestracja";
   };
 
   return (
