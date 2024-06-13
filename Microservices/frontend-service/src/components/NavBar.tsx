@@ -57,7 +57,7 @@ function NavBar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <a className="navbar-brand" href="http://localhost:5173/login">
+          <a className="navbar-brand" href="http://localhost:8080/login">
             LOGOWANIE
           </a>
           <div
@@ -76,14 +76,18 @@ function NavBar() {
 
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <a className="nav-link" href="http://localhost:5173/główna" style={navLinkStyle}>
+                  <a
+                    className="nav-link"
+                    href="http://localhost:8080/główna"
+                    style={navLinkStyle}
+                  >
                     STRONA GŁÓWNA
                   </a>
                 </li>
                 <li className="nav-item">
                   <a
                     className="nav-link"
-                    href="http://localhost:5173/data"
+                    href="http://localhost:8080/data"
                     style={navLinkStyle}
                   >
                     DANE OSOBOWE
@@ -92,7 +96,7 @@ function NavBar() {
                 <li className="nav-item">
                   <a
                     className="nav-link"
-                    href="http://localhost:5173/wynagrodzenia"
+                    href="http://localhost:8080/wynagrodzenia"
                     style={navLinkStyle}
                   >
                     WYNAGRODZENIA
@@ -101,7 +105,7 @@ function NavBar() {
                 <li className="nav-item">
                   <a
                     className="nav-link"
-                    href="http://localhost:5173/urlopy"
+                    href="http://localhost:8080/urlopy"
                     style={navLinkStyle}
                   >
                     URLOPY
@@ -110,7 +114,7 @@ function NavBar() {
                 <li className="nav-item">
                   <a
                     className="nav-link"
-                    href="http://localhost:5173/kalendarz"
+                    href="http://localhost:8080/kalendarz"
                     style={navLinkStyle}
                   >
                     KALENDARZ
@@ -119,14 +123,18 @@ function NavBar() {
                 <li className="nav-item">
                   <a
                     className="nav-link"
-                    href="http://localhost:5173/rekrutacja"
+                    href="http://localhost:8080/rekrutacja"
                     style={navLinkStyle}
                   >
                     REKRUTACJA
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="http://localhost:5173/szkolenia" style={navLinkStyle}>
+                  <a
+                    className="nav-link"
+                    href="http://localhost:8080/szkolenia"
+                    style={navLinkStyle}
+                  >
                     SZKOLENIA
                   </a>
                 </li>

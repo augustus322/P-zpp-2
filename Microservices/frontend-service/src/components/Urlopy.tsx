@@ -66,7 +66,7 @@ function Urlopy() {
   };
 
   const handleApplyForLeave = () => {
-    window.location.href = "http://localhost:5173/wniosek-o-urlop";
+    window.location.href = "http://localhost:8080/wniosek-o-urlop";
   };
 
   const employeeData = [
