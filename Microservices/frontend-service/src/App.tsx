@@ -15,6 +15,7 @@ import StronaHRRekrutacja from "./pages/StronaHRRekrutacja";
 import StronaSzkolenia from "./pages/StronaSzkolenia";
 import StronaGłówna from "./pages/StronaGłówna";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
+import StronaNoweSzkolenia from "./pages/StronaNoweSzkolenia";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
             <Route
               path="/szkolenia"
               element={<StronaSzkolenia></StronaSzkolenia>}
+            ></Route>
+            <Route
+              path="/nowe-szkolenia"
+              element={<StronaNoweSzkolenia></StronaNoweSzkolenia>}
             ></Route>
             <Route
               path="/kalendarz"

@@ -38,7 +38,6 @@ const headerStyle: React.CSSProperties = {
   textAlign: "left", // Wyśrodkowanie tekstu
   marginBottom: "10px", // Odstęp poniżej nagłówka
 };
-
 const wrapperStyle: React.CSSProperties = {
   maxWidth: "1000px",
   margin: "50px auto", // Wyśrodkowanie kontenera i odstęp od góry
@@ -61,12 +60,8 @@ const buttonStyle: React.CSSProperties = {
 function NoweSzkolenia() {
   const [formData, setFormData] = useState({
     nazwa: "",
-    dataRozpoczecia: "",
-    dataZakonczenia: "",
-    typ: "",
-    dlugosc: "",
+    status: "",
   });
-  const [showModal, setShowModal] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -78,25 +73,21 @@ function NoweSzkolenia() {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
+    // Tutaj możesz dodać logikę obsługi dodawania nowego szkolenia
+    console.log("Dodawanie nowego szkolenia:", formData);
+    // Wyczyść formularz po dodaniu szkolenia
+    setFormData({ nazwa: "", status: "" });
   };
 
   return (
     <>
       <div style={wrapperStyle}>
-        <div style={headerStyle}> WNIOSEK O SZKOLENIE</div>
+        <div style={headerStyle}>Dodaj nowe szkolenie</div>
         <div style={containerStyle}>
           <form style={formStyle} onSubmit={handleFormSubmit}>
             <div style={labelColumnStyle}>
-              <label htmlFor="nazwa">NAZWA SZKOLENIA</label>
-              <label htmlFor="dataRozpoczecia">DATA ROZPOCZĘCIA</label>
-              <label htmlFor="dataZakonczenia">DATA ZAKOŃCZENIA</label>
-              <label htmlFor="typ">TYP</label>
-              <label htmlFor="dlugosc">DŁUGOŚĆ</label>
+              <label htmlFor="nazwa">Nazwa szkolenia</label>
+              <label htmlFor="status">Status</label>
             </div>
             <div style={inputColumnStyle}>
               <input
@@ -107,37 +98,16 @@ function NoweSzkolenia() {
                 onChange={handleInputChange}
               />
               <input
-                type="date"
-                id="dataRozpoczecia"
-                className="form-control"
-                value={formData.dataRozpoczecia}
-                onChange={handleInputChange}
-              />
-              <input
-                type="date"
-                id="dataZakonczenia"
-                className="form-control"
-                value={formData.dataZakonczenia}
-                onChange={handleInputChange}
-              />
-              <input
                 type="text"
-                id="typ"
+                id="status"
                 className="form-control"
-                value={formData.typ}
-                onChange={handleInputChange}
-              />
-              <input
-                type="text"
-                id="dlugosc"
-                className="form-control"
-                value={formData.dlugosc}
+                value={formData.status}
                 onChange={handleInputChange}
               />
             </div>
             <div>
               <button type="submit" style={buttonStyle}>
-                Złóż wniosek
+                Dodaj szkolenie
               </button>
             </div>
           </form>
