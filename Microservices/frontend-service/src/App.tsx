@@ -16,7 +16,6 @@ import StronaSzkolenia from "./pages/StronaSzkolenia";
 import StronaGłówna from "./pages/StronaGłówna";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 import StronaNoweSzkolenia from "./pages/StronaNoweSzkolenia";
-import StronaRejestracja from "./pages/StronaRejestracja";
 
 function App() {
   return (
@@ -74,10 +73,6 @@ function App() {
             <Route
               path="/rekrutacja-hr"
               element={<StronaHRRekrutacja></StronaHRRekrutacja>}
-            ></Route>
-            <Route
-              path="/rejestracja"
-              element={<StronaRejestracja></StronaRejestracja>}
             ></Route>
           </Routes>
         </BrowserRouter>

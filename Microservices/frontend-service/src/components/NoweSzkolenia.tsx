@@ -63,7 +63,9 @@ function NoweSzkolenia() {
     status: "planowane", // Default value
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -74,7 +76,7 @@ function NoweSzkolenia() {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5173/szkolenia/courses", {
+      const response = await fetch("http://localhost:8080/szkolenia/courses", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -101,12 +103,12 @@ function NoweSzkolenia() {
   return (
     <>
       <div style={wrapperStyle}>
-        <div style={headerStyle}>Dodaj nowe szkolenie</div>
+        <div style={headerStyle}>DODAJ NOWE SZKOLENIE</div>
         <div style={containerStyle}>
           <form style={formStyle} onSubmit={handleFormSubmit}>
             <div style={labelColumnStyle}>
-              <label htmlFor="nazwa">Nazwa szkolenia</label>
-              <label htmlFor="status">Status</label>
+              <label htmlFor="nazwa">NAZWA SZKOLENIA</label>
+              <label htmlFor="status">STATUS</label>
             </div>
             <div style={inputColumnStyle}>
               <input
@@ -122,9 +124,9 @@ function NoweSzkolenia() {
                 value={formData.status}
                 onChange={handleInputChange}
               >
-                <option value="planowane">Planowane</option>
-                <option value="rozpoczęte">Rozpoczęte</option>
-                <option value="zakończone">Zakończone</option>
+                <option value="planowane">PLANOWANE</option>
+                <option value="rozpoczęte">ROZPOCZĘTE</option>
+                <option value="zakończone">ZAKOŃCZONE</option>
               </select>
             </div>
             <div>

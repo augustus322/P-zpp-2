@@ -1,5 +1,10 @@
-// UserContext.tsx
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 
 interface User {
   id: string;
@@ -15,13 +20,13 @@ interface UserContextType {
   setCurrentUser: (currentUser: User | null) => void;
 }
 
-const mockedUser = {
-  id: "1234567890",
-  firstName: "Jan",
-  lastName: "Kowalski",
-  email: "jan.kowalski@example.com",
-  phone: "+48 123 456 789",
-  position: "Developer",
+const mockedUser: User = {
+  id: " ",
+  firstName: " ",
+  lastName: " ",
+  email: " ",
+  phone: " ",
+  position: " ",
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -30,6 +35,35 @@ export const CurrentUserProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(mockedUser);
+  const [id, setId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchEmployee = async () => {
+      if (id) {
+        try {
+          const response = await fetch(
+            `https://localhost:7175/api/Employees/${id}`
+          );
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+          setCurrentUser({
+            id: data["id"],
+            firstName: data["firstName"],
+            lastName: data["lastName"],
+            email: data["email"],
+            phone: data["phone"],
+            position: data["position"],
+          });
+        } catch (error) {
+          console.error("Failed to fetch employee data:", error);
+        }
+      }
+    };
+
+    fetchEmployee();
+  }, [id]);
 
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>
@@ -41,7 +75,7 @@ export const CurrentUserProvider: React.FC<{ children: ReactNode }> = ({
 export const useCurrentUser = (): UserContextType => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error("useUser must be used within a CurrentUserProvider");
+    throw new Error("useCurrentUser must be used within a CurrentUserProvider");
   }
   return context;
 };

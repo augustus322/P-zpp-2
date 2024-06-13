@@ -1,27 +1,27 @@
 import React from "react";
 
 function Szkolenia() {
-    const containerStyle: React.CSSProperties = {
-        backgroundColor: "#F3F3F3",
-        boxShadow: "0px 4px 4px 0px #00000040",
-        padding: "15px",
-        borderRadius: "10px",
-        maxWidth: "1000px",
-        margin: "10px auto 0", // Wyśrodkowanie poziome i dodatkowy margines z góry
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px", // Odstęp między wierszami
-      };
-      
-      const headerRowStyle: React.CSSProperties = {
-        backgroundColor: "#F3F3F3",
-        boxShadow: "0px 4px 4px 0px #00000040",
-        borderRadius: "10px",
-        padding: "10px",
-        display: "flex",
-        justifyContent: "space-between",
-        textAlign: "center",
-      };
+  const containerStyle: React.CSSProperties = {
+    backgroundColor: "#F3F3F3",
+    boxShadow: "0px 4px 4px 0px #00000040",
+    padding: "15px",
+    borderRadius: "10px",
+    maxWidth: "1000px",
+    margin: "10px auto 0", // Wyśrodkowanie poziome i dodatkowy margines z góry
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px", // Odstęp między wierszami
+  };
+
+  const headerRowStyle: React.CSSProperties = {
+    backgroundColor: "#F3F3F3",
+    boxShadow: "0px 4px 4px 0px #00000040",
+    borderRadius: "10px",
+    padding: "10px",
+    display: "flex",
+    justifyContent: "space-between",
+    textAlign: "center",
+  };
 
   const headerCellStyle: React.CSSProperties = {
     flex: 1,
@@ -62,26 +62,42 @@ function Szkolenia() {
   };
 
   const szkolenia = [
-    { lp: 1, nazwa: "Szkolenie z zakresu zarządzania", status: "Rozpoczęte" },
-    { lp: 2, nazwa: "Szkolenie z obsługi oprogramowania", status: "Zakończone" },
-    { lp: 3, nazwa: "Szkolenie z negocjacji", status: "Planowane" },
-    { lp: 4, nazwa: "Szkolenie z zarządzania czasem", status: "Rozpoczęte" },
+    {
+      temat: "Szkolenie z zakresu zarządzania",
+      adres: "online",
+      data: "2024-06-11T14:28:59.322Z",
+    },
+    {
+      temat: "Szkolenie z obsługi oprogramowania",
+      adres: "online",
+      data: "2024-06-11T14:28:59.322Z",
+    },
+    {
+      temat: "Szkolenie z negocjacji",
+      adres: "online",
+      data: "2024-06-11T14:28:59.322Z",
+    },
+    {
+      temat: "Szkolenie z zarządzania czasem",
+      adres: "online",
+      data: "2024-06-11T14:28:59.322Z",
+    },
   ];
 
   return (
     <div style={wrapperStyle}>
       <div style={titleStyle}>SZKOLENIA</div>
       <div style={headerRowStyle}>
-        <div style={headerCellStyle}>LP</div>
-        <div style={headerCellStyle}>Nazwa szkolenia</div>
-        <div style={headerCellStyle}>Status</div>
+        <div style={headerCellStyle}>TEMAT</div>
+        <div style={headerCellStyle}>ADRES</div>
+        <div style={headerCellStyle}>DATA</div>
       </div>
       <div style={containerStyle}>
         {szkolenia.map((szkolenie, index) => (
           <div style={columnContainerStyle} key={index}>
-            <div style={cellStyle}>{szkolenie.lp}</div>
-            <div style={cellStyle}>{szkolenie.nazwa}</div>
-            <div style={cellStyle}>{szkolenie.status}</div>
+            <div style={cellStyle}>{szkolenie.temat}</div>
+            <div style={cellStyle}>{szkolenie.adres}</div>
+            <div style={cellStyle}>{szkolenie.data}</div>
           </div>
         ))}
       </div>
