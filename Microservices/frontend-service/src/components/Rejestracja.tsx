@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function Rejestracja() {
   const containerStyle: React.CSSProperties = {
@@ -56,11 +56,50 @@ function Rejestracja() {
     color: "#353535",
   };
 
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [phone, setPhone] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newEmployee = {
+      "firstName": firstName,
+      "lastName": lastName,
+      "phone": phone,
+      "email": email,
+      "address": "address",
+    "position": 1
+    };
+
+    try {
+      const response = await fetch('http://localhost:5261/api/Employees', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newEmployee),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log('Employee created successfully:', data);
+    } catch (error) {
+      console.error('Error creating employee:', error);
+    }
+  };
+
   return (
     <>
       <div style={wrapperStyle}>
         <div style={headerStyle}>FORMULARZ REJESTRACJI</div>
-        <form style={containerStyle}>
+        <form style={containerStyle} onSubmit={handleSubmit}>
           <div style={formStyle}>
             <div style={labelColumnStyle}>
               <label htmlFor="inputFirstName" className="col-form-label">
@@ -84,12 +123,12 @@ function Rejestracja() {
             </div>
 
             <div style={inputColumnStyle}>
-              <input type="text" id="inputFirstName" className="form-control" />
-              <input type="text" id="inputLastName" className="form-control" />
-              <input type="text" id="inputPhone" className="form-control" />
-              <input type="email" id="inputEmail" className="form-control" />
-              <input type="password" id="inputPassword" className="form-control" />
-              <input type="password" id="inputConfirmPassword" className="form-control" />
+              <input type="text" id="inputFirstName" className="form-control" onChange={e=>setFirstName(e.target.value)} />
+              <input type="text" id="inputLastName" className="form-control" onChange={e=>setLastName(e.target.value)}/>
+              <input type="text" id="inputPhone" className="form-control" onChange={e=>setPhone(e.target.value)}/>
+              <input type="email" id="inputEmail" className="form-control" onChange={e=>setEmail(e.target.value)}/>
+              <input type="password" id="inputPassword" className="form-control" onChange={e=>setPassword(e.target.value)}/>
+              <input type="password" id="inputConfirmPassword" className="form-control" onChange={e=>setConfirmPassword(e.target.value)}/>
             </div>
           </div>
           <p style={pElementStyle}>
@@ -117,6 +156,7 @@ function Rejestracja() {
               display: "flex",
               justifyContent: "center",
             }}
+            
           >
             Zarejestruj się
           </button>
