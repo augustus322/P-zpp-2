@@ -1,12 +1,12 @@
-import { databaseConnector } from "./connectors";
-import employeeCreateDto from "./dtos/employeeCreateDto";
-import employeeReadDto from "./dtos/employeeReadDto";
+import { databaseConnector as connector } from "./connectors";
+import employeeCreateDto from "./dtos/database/employeeCreateDto";
+import employeeReadDto from "./dtos/database/employeeReadDto";
 
-export const getAllEmployees = async (): Promise<
+const getAllEmployees = async (): Promise<
   Array<employeeReadDto> | undefined
 > => {
   try {
-    var response = await databaseConnector.get("/employees");
+    var response = await connector.get("/employees");
     return response.data;
   } catch (error) {
     console.error(error);
@@ -14,11 +14,11 @@ export const getAllEmployees = async (): Promise<
   }
 };
 
-export const getEmployeeById = async (
+const getEmployeeById = async (
   id: number
 ): Promise<employeeReadDto | undefined> => {
   try {
-    var response = await databaseConnector.get(`/employees/${id}`);
+    var response = await connector.get(`/employees/${id}`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -26,11 +26,11 @@ export const getEmployeeById = async (
   }
 };
 
-export const createEmployee = async (
+const createEmployee = async (
   employee: employeeCreateDto
 ): Promise<employeeReadDto | undefined> => {
   try {
-    var response = await databaseConnector.post(`/employees`, employee);
+    var response = await connector.post(`/employees`, employee);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -38,12 +38,12 @@ export const createEmployee = async (
   }
 };
 
-export const updateEmployee = async (
+const updateEmployee = async (
   id: number,
   employee: employeeCreateDto
 ): Promise<employeeReadDto | undefined> => {
   try {
-    var response = await databaseConnector.put(`/employees${id}`, employee);
+    var response = await connector.put(`/employees${id}`, employee);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -51,14 +51,24 @@ export const updateEmployee = async (
   }
 };
 
-export const deleteEmployee = async (
+const deleteEmployee = async (
   id: number
 ): Promise<employeeReadDto | undefined> => {
   try {
-    var response = await databaseConnector.delete(`/employees${id}`);
+    var response = await connector.delete(`/employees${id}`);
     return response.data;
   } catch (error) {
     console.error(error);
     return;
   }
 };
+
+const databaseConnector = {
+  getAllEmployees,
+  getEmployeeById,
+  createEmployee,
+  updateEmployee,
+  deleteEmployee,
+};
+
+export default databaseConnector;

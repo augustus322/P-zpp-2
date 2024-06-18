@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const authConnector = axios.create({
-  baseURL: "http://localhost:5175/api",
+  baseURL: "http://localhost:5098/api",
 });
 
 export const databaseConnector = axios.create({

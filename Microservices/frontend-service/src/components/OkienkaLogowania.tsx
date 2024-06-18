@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
+import authConnector from "../api/authConnector";
+import UserCredentials from "../api/dtos/auth/userCredentials";
+import jwtVerificator from "../auth/jwtVerificator";
+import databaseConnector from "../api/databaseConnector";
 
 const AUTH_API_DOMAIN = "http://localhost:5098";
 
@@ -48,20 +52,75 @@ function StronaStartowa() {
     color: "#6A6A6A",
   };
 
-  const handleLoginClick = () => {
-    const auth_endpoint = AUTH_API_DOMAIN + "/api/Auth";
-    const body = JSON.stringify({ login: login, password: password });
-    console.log({ auth_endpoint, body });
-    fetch(auth_endpoint, { method: "POST", body }).then((response) => {
-      console.log({ response });
-      // TODO: trzeba dopisac endpoint do pobrania danych zalogowanego usera
-      // const user_endpoint = "";
-      // fetch(user_endpoint).then((response) => {
-      //   const parsedUser = response.json();
-      //   setCurrentUser(parsedUser);
-      // });
-    });
+  const handleLoginClick = async () => {
+    var credentials: UserCredentials = {
+      email: login,
+      passwordHash: password,
+    };
+
+    var result = await authConnector.loginUser(credentials);
+
+    console.log("auth result", result);
+
+    if (result !== undefined) {
+      try {
+        var tokenPayload = jwtVerificator.verify(result.token);
+
+        if (tokenPayload !== undefined) {
+          console.log("user info", tokenPayload);
+
+          var employee = await databaseConnector.getEmployeeById(
+            tokenPayload.sub
+          );
+
+          console.log("employee info", employee);
+        }
+      } catch (error) {
+        console.error("token verify error", error);
+      }
+    }
   };
+
+  // const handleLoginClick = () => {
+  //   const auth_endpoint = AUTH_API_DOMAIN + "/api/Auth";
+
+  //   const userCredentials = {
+  //     email: login,
+  //     passwordHash: password,
+  //   };
+
+  //   const body = JSON.stringify({ login: login, password: password });
+
+  //   const content = JSON.stringify(userCredentials);
+
+  //   // console.log({ auth_endpoint, body });
+
+  //   console.log("auth_endpoint", auth_endpoint, "body", content);
+
+  //   // fetch(auth_endpoint, { method: "POST", body })
+
+  //   // const request =
+
+  //   fetch(auth_endpoint, {
+  //     method: "POST",
+  //     body: content,
+  //     headers: new Headers({
+  //       "content-type": "application/json",
+  //     }),
+  //   })
+  //     .then((response) => {
+  //       console.log({ response });
+  //       // TODO: trzeba dopisac endpoint do pobrania danych zalogowanego usera
+  //       // const user_endpoint = "";
+  //       // fetch(user_endpoint).then((response) => {
+  //       //   const parsedUser = response.json();
+  //       //   setCurrentUser(parsedUser);
+  //       // });
+  //     })
+  //     .catch((err) => {
+  //       console.error("fetch error:", err);
+  //     });
+  // };
 
   const handleRegisterClick = () => {
     window.location.href = "http://localhost:8080/rejestracja";

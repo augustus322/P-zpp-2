@@ -44,6 +44,7 @@ public class AuthenticationService
 		{
 			IsSuccess = true,
 			Error = null,
+			User = user,
 		};
 	}
 
