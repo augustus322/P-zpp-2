@@ -19,9 +19,9 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
-    # networks:
-    #   msvnetwork:
-    #     ipv4_address: 172.20.0.14
+    networks:
+      msvnetwork:
+        ipv4_address: 172.20.0.14
 
   auth-service:
     build:
@@ -144,6 +144,8 @@ services:
     # expose:
     #   - 80
     restart: unless-stopped
+    networks:
+      msvnetwork:
 
 volumes:
   postgres-data:

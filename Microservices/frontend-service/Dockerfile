@@ -16,10 +16,10 @@ EXPOSE 5173
 
 FROM base AS dev
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "dev", "--", "--mode=production" ]
 
 FROM base AS prod
 
 RUN npm run build
 
-CMD [ "npm", "run", "preview" ]
+CMD [ "npm", "run", "preview", "--", "--mode=production" ]

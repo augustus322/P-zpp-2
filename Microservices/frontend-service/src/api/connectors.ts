@@ -1,29 +1,30 @@
 import axios from "axios";
+import { apiDomains } from "./domains";
 
 export const authConnector = axios.create({
-  baseURL: "http://localhost:5098/api",
+  baseURL: apiDomains.auth,
 });
 
 export const databaseConnector = axios.create({
-  baseURL: "http://localhost:5261/api",
+  baseURL: apiDomains.database,
 });
 
 export const meetingsConnector = axios.create({
-  baseURL: "http://localhost:5176/api",
+  baseURL: apiDomains.meeting,
 });
 
 export const recruitmentConnector = axios.create({
-  baseURL: "http://localhost:5230/api",
+  baseURL: apiDomains.recruitment,
 });
 
 export const salaryConnector = axios.create({
-  baseURL: "http://localhost:5077/api",
+  baseURL: apiDomains.salary,
 });
 
 export const timeOffConnector = axios.create({
-  baseURL: "http://localhost:5121/api",
+  baseURL: apiDomains.timeOff,
 });
 
 export const userManagerConnector = axios.create({
-  baseURL: "http://localhost:5116/api",
+  baseURL: apiDomains.userManager,
 });

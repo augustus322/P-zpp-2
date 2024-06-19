@@ -29,7 +29,8 @@ builder.Services.AddScoped<AuthenticationService, AuthenticationService>();
 
 builder.Services.AddHttpClient();
 
-string[] allowedOrigin = ["http://localhost"];
+//string[] allowedOrigin = ["http://localhost"];
+var allowedOrigin = builder.Configuration["AllowedHosts"]!;
 
 builder.Services.AddCors(options =>
 {
@@ -40,7 +41,7 @@ builder.Services.AddCors(options =>
 		// 	.AllowAnyMethod();
 
 		policy
-			.AllowAnyOrigin()
+			.WithOrigins(allowedOrigin)
 			.AllowAnyHeader()
 			.AllowAnyMethod();
 	});
