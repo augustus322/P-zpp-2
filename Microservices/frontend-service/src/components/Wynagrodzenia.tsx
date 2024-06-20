@@ -184,7 +184,7 @@ function Wynagrodzenia() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Wynagrodzenia;

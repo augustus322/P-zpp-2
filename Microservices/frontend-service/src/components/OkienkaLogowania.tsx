@@ -123,7 +123,7 @@ function StronaStartowa() {
   // };
 
   const handleRegisterClick = () => {
-    window.location.href = "http://localhost:8080/rejestracja";
+    window.location.href = "/rejestracja";
   };
 
   return (

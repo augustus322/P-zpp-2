@@ -8,15 +8,15 @@ const Glowna = () => {
   };
 
   const handleApplyForLeave = () => {
-    window.location.href = "http://localhost:5173/Urlopy";
+    window.location.href = "/Urlopy";
   };
 
   const handleNavigateToTrainings = () => {
-    window.location.href = "http://localhost:5173/Szkolenia";
+    window.location.href = "/Szkolenia";
   };
 
   const handleNavigateToCalendar = () => {
-    window.location.href = "http://localhost:5173/Kalendarz";
+    window.location.href = "/Kalendarz";
   };
 
   const containerStyle: React.CSSProperties = {
