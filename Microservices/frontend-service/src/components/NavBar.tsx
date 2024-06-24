@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   const navbarStyle: React.CSSProperties = {
@@ -57,9 +58,9 @@ function NavBar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <a className="navbar-brand" href="/login">
+          <Link className="navbar-brand" to="/login">
             LOGOWANIE
-          </a>
+          </Link>
           <div
             className="offcanvas offcanvas-start "
             id="offcanvasDarkNavbar"
@@ -76,76 +77,64 @@ function NavBar() {
 
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    href="/główna"
-                    style={navLinkStyle}
-                  >
+                  <Link className="nav-link" to="/główna" style={navLinkStyle}>
                     STRONA GŁÓWNA
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    href="/data"
-                    style={navLinkStyle}
-                  >
+                  <Link className="nav-link" to="/data" style={navLinkStyle}>
                     DANE OSOBOWE
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/wynagrodzenia"
+                    to="/wynagrodzenia"
                     style={navLinkStyle}
                   >
                     WYNAGRODZENIA
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    href="/urlopy"
-                    style={navLinkStyle}
-                  >
+                  <Link className="nav-link" to="/urlopy" style={navLinkStyle}>
                     URLOPY
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/kalendarz"
+                    to="/kalendarz"
                     style={navLinkStyle}
                   >
                     KALENDARZ
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/rekrutacja"
+                    to="/rekrutacja"
                     style={navLinkStyle}
                   >
                     REKRUTACJA
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/szkolenia"
+                    to="/szkolenia"
                     style={navLinkStyle}
                   >
                     SZKOLENIA
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="nav-link"
-                    href="/rejestracja"
+                    to="/rejestracja"
                     style={navLinkStyle}
                   >
                     REJESTRACJA
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

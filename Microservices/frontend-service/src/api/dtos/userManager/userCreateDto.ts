@@ -1,4 +1,4 @@
-type employeeCreateDto = {
+type userCreateDto = {
   firstName: string;
   lastName: string;
   phone: string;
@@ -7,4 +7,4 @@ type employeeCreateDto = {
   position: number;
 };
 
-export default employeeCreateDto;
+export default userCreateDto;
